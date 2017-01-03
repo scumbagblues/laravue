@@ -43,7 +43,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if(Auth::check())
+                        &nbsp;  <li><a href="{{ route('profile', ['slug' => Auth::user()->slug]) }}">My Profile</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,5 +85,14 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script>
+        @if(Session::has('success'))
+            noty({
+                type: 'success',
+                layout: 'bottomLeft',
+                text: '{{ Session::get('success') }}'
+        });
+        @endif
+    </script>
 </body>
 </html>
