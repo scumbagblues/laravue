@@ -15,16 +15,46 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/check_relationship_status/{id}', [
+    'uses' => 'FriendshipsController@check',
+    'as' => 'check'
+]);
+
+Route::get('/add_friend/{id}', [
+    'uses' => 'FriendshipsController@add_friend',
+    'as' => 'add_friend'
+]);
+
 Route::get('/hello', function () {
     return Auth::user()->hello();
 });
 
 Route::get('/add', function () {
-    return \App\User::first()->add_friend(2);
+    return \App\User::find(1)->add_friend(4);
 });
 
 Route::get('/accept', function () {
-    return \App\User::first()->accept_friend(1);
+    return \App\User::find(4)->accept_friend(1);
+});
+
+Route::get('/friends', function (){
+   return \App\User::find(1)->friends();
+});
+
+Route::get('/pending_friends', function (){
+    return \App\User::find(4)->pending_friend_requests();
+});
+
+Route::get('/ids', function (){
+    return \App\User::find(4)->friends_ids();
+});
+
+Route::get('/is', function (){
+    return \App\User::find(4)->is_friends_with(1);
+});
+
+Route::get('/ch', function (){
+    return \App\User::find(2)->pending_friend_requests_ids();
 });
 
 Auth::routes();

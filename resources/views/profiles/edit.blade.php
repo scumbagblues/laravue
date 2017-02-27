@@ -12,17 +12,17 @@
                             {{ csrf_field() }}
                             <div class="form-group">
 
-                                <labe for="avatar">Upload avatar</labe>
-                                <input type="file" name="avatar" value="{{ $info->location }}" class="form-control" accept="image/*">
+                                <label for="avatar">Upload avatar</label>
+                                <input type="file" name="avatar" value="" class="form-control" accept="image/*">
                             </div>
                             <div class="form-group">
 
-                                <labe for="location">Location</labe>
+                                <label for="location">Location</label>
                                 <input type="text" name="location" value="{{ $info->location }}" class="form-control" required>
                             </div>
                             <div class="form-group">
 
-                                <labe for="location">About me</labe>
+                                <label for="location">About me</label>
                                 <textarea name="about" id="about" cols="30" rows="10" class="form-control" required>
                                     {{ $info->about }}
                                 </textarea>
